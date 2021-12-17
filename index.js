@@ -12,8 +12,8 @@ const Pool = require('pg').Pool;
 const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
-    database: 'gfgbackend',
-    password: 'postgres',
+    database: 'my_test_db1',
+    password: 'Changeeb88804!',
     dialect: 'postgres',
     port: 5432
 });
@@ -40,15 +40,15 @@ pool.connect((err, client, release) => {
             return console.error(
                 'Error executing query', err.stack)
         }
-        console.log("Connected to Database !")
+        console.log("Connected to Database!")
     })
 })
 
 app.get('/testdata', (req, res, next) => {
-    console.log("TEST DATA :");
+    // console.log("TEST DATA :");
     pool.query('Select * from test')
         .then(testData => {
-            console.log(testData);
+            // console.log(testData);
             res.send(testData.rows);
         })
 })
